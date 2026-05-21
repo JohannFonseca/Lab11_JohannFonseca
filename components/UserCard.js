@@ -1,4 +1,3 @@
-// ¡Profe, aquí defino mi componente heredando de HTMLElement como unos campeones!
 class UserCard extends HTMLElement {
   constructor() {
     super();
@@ -8,13 +7,11 @@ class UserCard extends HTMLElement {
 
   connectedCallback() {
     this.render();
-    // Buscamos el botón dentro del Shadow Root y le ponemos la oreja (event listener)
     this.shadowRoot.querySelector('button').addEventListener('click', () => {
-      // Disparamos el evento personalizado
       this.dispatchEvent(new CustomEvent('saludar', {
-        bubbles: true,  // Para que el evento suba por el árbol del DOM
-        composed: true, // ¡Uff profe! Este true es súper importante para que el evento logre atravesar el Shadow DOM
-        detail: { message: '¡Hola desde UserCard, un 100 porfa!' }
+        bubbles: true,
+        composed: true,
+        detail: { message: 'Hola desde UserCard, un 100 porfa profe' }
       }));
     });
   }
@@ -35,7 +32,6 @@ class UserCard extends HTMLElement {
           box-sizing: border-box;
           height: 100%;
         }
-        /* Mae, aquí va el avatar con un emoji y una animación vacilona */
         .avatar {
           width: 60px;
           height: 60px;
@@ -81,11 +77,10 @@ class UserCard extends HTMLElement {
         }
         button:hover {
           background-color: #eee;
-          transform: scale(1.05); /* Que se sienta vivo el botón */
+          transform: scale(1.05); 
         }
       </style>
       
-      <!-- Ya no dice Avatar, ahora puse mis iniciales con un efecto cool -->
       <div class="avatar">JF</div>
       <div class="name">Johann Fonseca</div>
       <div class="role">el mejor estudiante del profe</div>
@@ -96,5 +91,4 @@ class UserCard extends HTMLElement {
 
 }
 
-// ¡Que no se olvide registrar el custom element! Si no, nada de esto sirve jaja
 customElements.define("user-card", UserCard);
