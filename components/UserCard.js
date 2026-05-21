@@ -47,7 +47,7 @@ class UserCard extends HTMLElement {
           font-size: 2.2rem;
           margin-bottom: 15px;
           box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          /* ¡Puntos extra por la animación! 😎 */
+          /* ¡Puntos extra por la animación! */
           animation: float 3s ease-in-out infinite;
         }
         
@@ -85,14 +85,15 @@ class UserCard extends HTMLElement {
         }
       </style>
       
-      <!-- Ya no dice Avatar, ahora puse mi yo hacker -->
-      <div class="avatar">👨‍💻</div>
+      <!-- Ya no dice Avatar, ahora puse mis iniciales con un efecto cool -->
+      <div class="avatar">JF</div>
       <div class="name">Johann Fonseca</div>
       <div class="role">el mejor estudiante del profe</div>
       
       <button part="btn">Saludar</button>
     `;
   }
+
 }
 
 // ¡Que no se olvide registrar el custom element! Si no, nada de esto sirve jaja
