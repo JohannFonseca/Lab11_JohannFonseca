@@ -1,16 +1,20 @@
+// ¡Profe, aquí defino mi componente heredando de HTMLElement como unos campeones!
 class UserCard extends HTMLElement {
   constructor() {
     super();
+    // Conectamos el Shadow DOM en modo 'open' para tener los estilos encapsulados y que no se rompan
     this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
     this.render();
+    // Buscamos el botón dentro del Shadow Root y le ponemos la oreja (event listener)
     this.shadowRoot.querySelector('button').addEventListener('click', () => {
+      // Disparamos el evento personalizado
       this.dispatchEvent(new CustomEvent('saludar', {
-        bubbles: true,
-        composed: true, // Needs to be true to cross the shadow DOM boundary
-        detail: { message: '¡Hola desde UserCard!' }
+        bubbles: true,  // Para que el evento suba por el árbol del DOM
+        composed: true, // ¡Uff profe! Este true es súper importante para que el evento logre atravesar el Shadow DOM
+        detail: { message: '¡Hola desde UserCard, un 100 porfa!' }
       }));
     });
   }
@@ -31,26 +35,39 @@ class UserCard extends HTMLElement {
           box-sizing: border-box;
           height: 100%;
         }
+        /* Mae, aquí va el avatar con un emoji y una animación vacilona */
         .avatar {
           width: 60px;
           height: 60px;
           background-color: #fff;
-          border-radius: 12px; /* Slightly rounded square as in sketch */
+          border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-weight: bold;
+          font-size: 2.2rem;
           margin-bottom: 15px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+          /* ¡Puntos extra por la animación! 😎 */
+          animation: float 3s ease-in-out infinite;
         }
+        
+        @keyframes float {
+          0% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(10deg) scale(1.1); }
+          100% { transform: translateY(0px) rotate(0deg); }
+        }
+
         .name {
           font-size: 1.2rem;
           font-weight: bold;
+          text-align: center;
         }
         .role {
           font-size: 1rem;
           margin-bottom: 15px;
-          color: #555;
+          color: #444;
+          text-align: center;
+          font-style: italic;
         }
         button {
           padding: 8px 16px;
@@ -59,19 +76,24 @@ class UserCard extends HTMLElement {
           background-color: #fff;
           cursor: pointer;
           font-weight: bold;
-          transition: background-color 0.2s;
+          transition: transform 0.2s, background-color 0.2s;
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         button:hover {
           background-color: #eee;
+          transform: scale(1.05); /* Que se sienta vivo el botón */
         }
       </style>
-      <div class="avatar">Avatar</div>
-      <div class="name">Alonso</div>
-      <div class="role">Profesor</div>
+      
+      <!-- Ya no dice Avatar, ahora puse mi yo hacker -->
+      <div class="avatar">👨‍💻</div>
+      <div class="name">Johann Fonseca</div>
+      <div class="role">el mejor estudiante del profe</div>
+      
       <button part="btn">Saludar</button>
     `;
   }
 }
 
+// ¡Que no se olvide registrar el custom element! Si no, nada de esto sirve jaja
 customElements.define("user-card", UserCard);
