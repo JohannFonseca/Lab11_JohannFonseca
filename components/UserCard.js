@@ -32,31 +32,12 @@ class UserCard extends HTMLElement {
           box-sizing: border-box;
           height: 100%;
         }
-        .avatar {
-          width: 60px;
-          height: 60px;
-          background-color: #fff;
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 2.2rem;
-          margin-bottom: 15px;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          /* ¡Puntos extra por la animación! */
-          animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-          0% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-10px) rotate(10deg) scale(1.1); }
-          100% { transform: translateY(0px) rotate(0deg); }
-        }
 
         .name {
           font-size: 1.2rem;
           font-weight: bold;
           text-align: center;
+          margin-top: 15px;
         }
         .role {
           font-size: 1rem;
@@ -81,7 +62,6 @@ class UserCard extends HTMLElement {
         }
       </style>
       
-      <div class="avatar">JF</div>
       <div class="name">Johann Fonseca</div>
       <div class="role">el mejor estudiante del profe</div>
       
