@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <style>
+    body {
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: sans-serif;
+    }
+  </style>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <user-dashboard>
+    <user-card></user-card>
+    <weather-time></weather-time>
+    <warning-badge pulsing>Sesión por expirar</warning-badge>
+  </user-dashboard>
+</body>
+</html>
